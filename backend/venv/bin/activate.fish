@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/nishant/Documents/all_files/Docs/ToDo/backend/venv"
+set -gx VIRTUAL_ENV "/Users/nishant/Documents/all_files/Docs/ToDo00/CanaryMailToDo/backend/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

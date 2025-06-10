@@ -54,11 +54,13 @@ def delete_task(db: Session, task_id: int):
 def search_tasks(db: Session, tag=None, text=None, date=None, day=None, time=None):
     query = db.query(Task)
     if tag:
-        tag_obj = db.query(Tag).filter_by(name=tag).first()
-        if tag_obj:
-            query = query.filter(Task.tags.contains(tag_obj))
-        else:
-            return []
+        # tag_obj = db.query(Tag).filter_by(name=tag).first()
+        # if tag_obj:
+        #     query = query.filter(Task.tags.contains(tag_obj))
+        # else:
+        #     return []
+         # Join with Tag table for partial match
+        query = query.join(Task.tags).filter(Tag.name.ilike(f"%{tag}%"))
     if text:
         like_text = f"%{text}%"
         query = query.filter((Task.title.ilike(like_text)) | (Task.description.ilike(like_text)))
